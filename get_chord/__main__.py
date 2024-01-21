@@ -18,11 +18,7 @@ if __name__ == "__main__":
                     continue
                 output = "N.C."
                 if len(pressed_notes) > 1:
-                    pressed_notes_mod12 = []
-                    for v in pressed_notes:
-                        n = v % 12
-                        if n not in pressed_notes_mod12:
-                            pressed_notes_mod12.append(n)
+                    pressed_notes_mod12 = set(v % 12 for v in pressed_notes)
                     chord = chord_analyze.get_chord(
                         pressed_notes_mod12, min(pressed_notes) % 12)
                     if len(chord) != 0:
